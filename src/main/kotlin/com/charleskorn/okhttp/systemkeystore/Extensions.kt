@@ -37,12 +37,14 @@ private fun getDefaultTrustManager(): X509TrustManager = buildTrustManagerForKey
 
 private fun getOSTrustManagers(): List<X509TrustManager> {
     return when (OperatingSystem.current) {
+        OperatingSystem.Linux -> listOf(buildLinuxTrustManager())
         OperatingSystem.Mac -> listOf(buildMacTrustManager())
         OperatingSystem.Windows -> listOf(buildWindowsUserTrustManager())
         OperatingSystem.Other -> emptyList()
     }
 }
 
+private fun buildLinuxTrustManager(): X509TrustManager = buildTrustManagerForKeyStoreType("Linux")
 private fun buildMacTrustManager(): X509TrustManager = buildTrustManagerForKeyStoreType("KeychainStore")
 private fun buildWindowsUserTrustManager(): X509TrustManager = buildTrustManagerForKeyStoreType("Windows-ROOT")
 

@@ -53,6 +53,16 @@ internal abstract class TrustedCertificateContainer(val certificate: TestCertifi
     protected abstract fun removeFromLocalTrustStore(certificatePath: Path)
 }
 
+internal class LinuxTrustedCertificateContainer(certificate: TestCertificate) : TrustedCertificateContainer(certificate) {
+    override fun addToLocalTrustStore(certificatePath: Path) {
+        TODO("Not yet implemented")
+    }
+
+    override fun removeFromLocalTrustStore(certificatePath: Path) {
+        TODO("Not yet implemented")
+    }
+}
+
 // This adds a certificate at the user level.
 internal class MacKeychainTrustedCertificateContainer(certificate: TestCertificate) : TrustedCertificateContainer(certificate) {
     override fun addToLocalTrustStore(certificatePath: Path) {

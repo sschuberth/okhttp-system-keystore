@@ -17,6 +17,7 @@
 package com.charleskorn.okhttp.systemkeystore
 
 internal enum class OperatingSystem {
+    Linux,
     Mac,
     Windows,
     Other;
@@ -28,6 +29,7 @@ internal enum class OperatingSystem {
             val osName = System.getProperty("os.name").lowercase()
 
             return when {
+                osName.startsWith("linux") -> Linux
                 osName.startsWith("mac") -> Mac
                 osName.startsWith("windows") -> Windows
                 else -> Other
