@@ -25,11 +25,11 @@ internal enum class OperatingSystem {
         internal val current: OperatingSystem = determineCurrentOperatingSystem()
 
         private fun determineCurrentOperatingSystem(): OperatingSystem {
-            val osName = System.getProperty("os.name")
+            val osName = System.getProperty("os.name").lowercase()
 
             return when {
-                osName.startsWith("mac", ignoreCase = true) -> Mac
-                osName.startsWith("windows", ignoreCase = true) -> Windows
+                osName.startsWith("mac") -> Mac
+                osName.startsWith("windows") -> Windows
                 else -> Other
             }
         }
